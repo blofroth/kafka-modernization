@@ -1,4 +1,8 @@
-# kafka-modernization project
+# Quarkus Kafka Product cache demo project
+
+Demo project for the Meetup presentation, *Modernizing Legacy from J2EE-monoliths to Microservices and Event Streaming*. 
+
+https://www.meetup.com/Cloud-Transformation/events/271980635/
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -30,10 +34,21 @@ You can then execute your native executable with: `./target/kafka-modernization-
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/building-native-image.
 
 ## Starting Kafka 
-```
+```bash
 cd path/to/kafka
 bin/zookeeper-server-start.sh config/zookeeper.properties
 bin/kafka-server-start.sh config/server.properties
 bin/kafka-topics.sh --create --topic products --bootstrap-server localhost:9092
+# send a message
 cat product1_v1.json | bin/kafka-console-producer.sh --topic products --bootstrap-server localhost:9092
+
+# or use the script (creates the topic)
+sh send-kafka-message.sh product1_v1.json
+```
+
+Alternatively start Kafka with `docker-compose`:
+
+```bash
+docker-compose up
+sh send-kafka-message.sh product1_v1.json
 ```

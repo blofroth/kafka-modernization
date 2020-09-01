@@ -21,8 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ProductDataCache {
     private static Logger logger = LoggerFactory.getLogger(ProductDataCache.class);
 
-    private ConcurrentHashMap<Integer, Product> cache
-            = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<Integer, Product> cache = new ConcurrentHashMap<>();
 
     @Incoming("products")
     public void cacheProductUpdate(Product product) {
